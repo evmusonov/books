@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Evmusonov\LaravelFileHelper\FileHelperServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getPasswordHash($email)
+    {
+        $user = self::where(['email' => $email])->first();
+        if ($user) {
+            return $user->password;
+        }
+    }
 }
