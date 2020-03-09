@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap&subset=cyrillic');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+main {
+    display: block;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans', sans-serif;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.container {
+    background: #f8f8f8;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    padding-bottom: 15px;
+}
+
+.mb-4 {
+    margin-bottom: 40px;
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+.header {
+    margin-top: 20px;
+}
+
+.header .logo {
+    width: 49%;
+    display: inline-block;
+}
+
+.header .slogan {
+    width: 49%;
+    display: inline-block;
+    text-align: right;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 800px;
+    }
+}

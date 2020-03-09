@@ -7,7 +7,20 @@ html, body {
     font-family: 'PT Sans', sans-serif;
 }
 
+a {
+    color: #188181;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
 body {
+    display: table;
+    min-height: 100vh;
+    width: 100%;
     background: #f8f8f8;
 }
 
@@ -15,34 +28,84 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'PT Sans', sans-serif;
 }
 
+h1 {
+    font-size: 32px;
+}
+
+main {
+    display: table-row;
+
+    height: 100%;
+}
+
 header {
     height: 60px;
     background: #ffffff;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.1);
+    -moz-box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.1);
+    box-shadow: 0px 5px 10px 0px rgba(34, 60, 80, 0.1);
 }
 
+footer {
+    background: #188181;
+    height: 100px;
+    color: #ffffff;
+}
+
+input[type="checkbox"] {
+    position: unset;
+    margin: 0;
+}
+
+/* Header */
+.header-sign {
+    float: right;
+    margin-top: 15px;
+}
+.header-sign a {
+    text-decoration: none;
+}
+.header-sign .sign-up-button {
+    padding: 10px 15px;
+    background: #188181;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.header-sign .sign-up-button:hover {
+    background: #009999;
+    text-decoration: none;
+}
+.logo {
+    margin-top: 5px;
+}
+/* End of header */
+
+/* Form */
 .alert {
     margin-top: 5px;
     padding: 5px;
 }
-
 .auth-form {
     width: 400px;
     margin: 0 auto;
 }
-
 .form {
     width: 600px;
     margin: 0 auto;
 }
-
 .list {
     margin: 20px 0;
 }
-
 .label-block {
     display: block;
     clear: both;
 }
+.forget-password {
+    float: right;
+}
+/* End of form */
 
 .close-img-button {
     position: absolute;
@@ -76,3 +139,61 @@ header {
     text-decoration: none;
     background: #eeeeee;
 }
+
+/* Dropdown */
+.custom-dropdown {
+    float: right;
+    margin-top: 10px;
+}
+.custom-dropdown .dropdown-toggle::after {
+    all: unset;
+}
+.custom-dropdown .btn-secondary {
+    background: #188181;
+    border: none;
+    padding: 8px 15px;
+}
+.custom-dropdown .btn-secondary:hover {
+    border: none;
+}
+.custom-dropdown .btn:hover, .btn:focus, .btn.focus {
+    background: #009999;
+    color: white;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle {
+    background: #009999;
+    color: white;
+}
+.custom-dropdown .dropdown-item.active, .dropdown-item:active {
+    background: #009999;
+}
+/* End of Dropdown */
+
+/* Button */
+.custom-button {
+    width: 100%;
+    background: #188181;
+    border: none;
+}
+.custom-button:hover {
+    background: #009999;
+}
+.custom-button:not(:disabled):not(.disabled).active,
+.custom-button:not(:disabled):not(.disabled):active {
+    background: #188181;
+}
+/* End of button */
+
+/* Modal */
+.modal-text {
+    line-height: 1.5;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+.modal-header .close {
+    margin: -1rem -1rem -1rem auto;
+}
+/* End of modal */

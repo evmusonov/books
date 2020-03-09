@@ -31,7 +31,7 @@
                         <p class="alert alert-danger" role="alert">{{ $errors->first('password_confirmation') }}</p>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    <button type="submit" class="btn btn-primary custom-button">Зарегистрироваться</button>
                 </form>
             </div>
         </div>

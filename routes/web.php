@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', 'MainController@index');
 
 Route::group(['middleware' => ['admin']], function () {
@@ -68,3 +70,13 @@ Route::get('/user/sign-up', 'UserController@signUp');
 Route::post('/user/sign-up', 'UserController@register');
 Route::post('/user/sign-in', 'UserController@login');
 Route::get('/user/logout', 'UserController@logout');
+Route::get('/user/email-confirmation', 'UserController@emailConfirmation');
+Route::get('/user/{login}', 'UserController@profile');
+Route::post('/user/reset-password', 'UserController@resetPassword');
+
+Route::get('/mailable', function () {
+    $user = App\User::find(1);
+
+    return new App\Mail\UserRegistration($user);
+    //Mail::to('evmusonov@gmail.com')->send(new \App\Mail\UserRegistration());
+});

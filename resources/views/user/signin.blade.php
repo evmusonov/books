@@ -30,14 +30,16 @@
                             <p class="alert alert-danger" role="alert">{{ session('passwordError') }}</p>
                         @endif
                     </div>
-                    <div class="form-group form-check">
+                    <div class="form-group">
                         <input type="hidden" name="remember" value="0">
                         <input type="checkbox" class="form-check-input" name="remember" id="remember">
                         <label class="form-check-label" for="remember">Запомнить</label>
+                        <div class="forget-password"><a href="/user/reset-password" onclick="$('#reset-password-modal').modal(); return false;">Забыли пароль?</a></div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="submit" class="btn btn-primary custom-button">Войти</button>
                 </form>
             </div>
         </div>
     </div>
+    @include('modals.reset-password')
 @endsection
