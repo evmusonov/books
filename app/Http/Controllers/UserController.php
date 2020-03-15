@@ -56,7 +56,7 @@ class UserController extends Controller
                     return redirect('/');
                 }
             } else {
-                return back()->with('emailError', 'Пользователь с таким E-mail адресом не существует')->withInput();;
+                return back()->with('emailError', 'Пользователь с таким E-mail адресом не существует')->withInput();
             }
         } else {
             return back()->withErrors($validator)->withInput();

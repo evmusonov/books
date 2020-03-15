@@ -32,6 +32,18 @@ h1 {
     font-size: 32px;
 }
 
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
 main {
     display: table-row;
 
@@ -51,6 +63,7 @@ footer {
     background: #188181;
     height: 100px;
     color: #ffffff;
+    margin-top: 100px;
 }
 
 input[type="checkbox"] {
@@ -161,14 +174,50 @@ input[type="checkbox"] {
     color: white;
 }
 
-.btn-secondary:not(:disabled):not(.disabled).active,
-.btn-secondary:not(:disabled):not(.disabled):active,
-.show>.btn-secondary.dropdown-toggle {
+.custom-dropdown .btn-secondary:not(:disabled):not(.disabled).active,
+.custom-dropdown .btn-secondary:not(:disabled):not(.disabled):active,
+.custom-dropdown .show>.btn-secondary.dropdown-toggle {
     background: #009999;
     color: white;
 }
 .custom-dropdown .dropdown-item.active, .dropdown-item:active {
     background: #009999;
+}
+.custom-dropdown .dropdown-item {
+    text-decoration: none;
+}
+
+.custom-dropdown-left {
+    margin-top: 10px;
+}
+.custom-dropdown-left .dropdown-toggle::after {
+    all: unset;
+}
+.custom-dropdown-left .btn-secondary {
+    background: #188181;
+    border: none;
+    padding: 8px 15px;
+    text-decoration: none;
+}
+.custom-dropdown-left .btn-secondary:hover {
+    border: none;
+}
+.custom-dropdown-left .btn:hover, .btn:focus, .btn.focus {
+    background: #009999;
+    color: white;
+}
+
+.custom-dropdown-left .btn-secondary:not(:disabled):not(.disabled).active,
+.custom-dropdown-left .btn-secondary:not(:disabled):not(.disabled):active,
+.custom-dropdown-left .show>.btn-secondary.dropdown-toggle {
+    background: #009999;
+    color: white;
+}
+.custom-dropdown-left .dropdown-item.active, .dropdown-item:active {
+    background: #009999;
+}
+.custom-dropdown-left .dropdown-item {
+    text-decoration: none;
 }
 /* End of Dropdown */
 
@@ -197,3 +246,41 @@ input[type="checkbox"] {
     margin: -1rem -1rem -1rem auto;
 }
 /* End of modal */
+
+/* User */
+.user-books-list {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+.book-item {
+    background: #ffffff;
+    padding: 5px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    overflow: hidden;
+}
+.book-item .footer div {
+    font-size: 14px;
+    color: #999999;
+}
+.book-item .footer .status {
+    float: left;
+    margin-left: 5px;
+}
+.book-item .footer .views {
+    float: right;
+    margin-right: 5px;
+}
+.book-item .edit-panel {
+    display: none;
+    position: absolute;
+    background: #ffffff;
+    padding: 0 5px;
+    right: 15px;
+    top: 0;
+    z-index: 10;
+}
+/* End of user */

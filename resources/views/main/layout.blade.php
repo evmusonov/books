@@ -22,6 +22,7 @@ use App\Components\MenuHelper as Menu;
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/forms.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
     <header>

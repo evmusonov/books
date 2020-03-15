@@ -65,14 +65,22 @@ Route::post('/admin/login', 'AdminController@auth');
 Route::get('/admin/login', 'AdminController@login');
 
 //User
+Route::group(['middleware' => ['auth']], function () {
+
+});
 Route::get('/user/sign-in', 'UserController@signIn');
 Route::get('/user/sign-up', 'UserController@signUp');
 Route::post('/user/sign-up', 'UserController@register');
 Route::post('/user/sign-in', 'UserController@login');
 Route::get('/user/logout', 'UserController@logout');
 Route::get('/user/email-confirmation', 'UserController@emailConfirmation');
-Route::get('/user/{login}', 'UserController@profile');
 Route::post('/user/reset-password', 'UserController@resetPassword');
+Route::get('/user/{login}', 'UserController@profile');
+
+//Books
+Route::get('/user/{login}/books', 'BookController@userList');
+Route::get('/user/{login}/books/create', 'BookController@create');
+Route::post('/user/{login}/books', 'BookController@store');
 
 Route::get('/mailable', function () {
     $user = App\User::find(1);

@@ -44,4 +44,9 @@ class User extends Authenticatable
             return $user->password;
         }
     }
+
+    public function getBooks()
+    {
+        return Book::where('user_id', $this->id)->get();
+    }
 }
