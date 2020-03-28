@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function deleteFile(module, content_id, filename) {
     if (confirm('Вы уверены, что хотите удалить файл?')) {
-        $.post('/admin/delete-file',
+        $.post('/main/delete-file',
             {
                 '_token': $('meta[name=csrf-token]').attr('content'),
                 module: module,

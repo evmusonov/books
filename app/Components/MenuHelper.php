@@ -7,6 +7,6 @@ class MenuHelper
 {
     public static function get()
     {
-        return view('admin.menu.template', ['menu' => ModelMenu::where('status', 1)->orderBy('weight', 'asc')->get()]);
+        return view('menu.template', ['menu' => ModelMenu::where('status', 1)->orderBy('weight', 'asc')->get()]);
     }
 }

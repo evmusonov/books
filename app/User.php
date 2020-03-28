@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'login', 'email', 'password', 'email_verify_token'
+        'name', 'phone', 'city_id', 'login', 'email', 'password', 'email_verify_token'
     ];
 
     /**
@@ -47,6 +47,11 @@ class User extends Authenticatable
 
     public function getBooks()
     {
-        return Book::where('user_id', $this->id)->get();
+        return Book::where('user_id', $this->id)->orderBy('created_at', 'desc')->get();
+    }
+
+    public function city()
+    {
+        return $this->hasOne('App\City', 'id', 'city_id');
     }
 }

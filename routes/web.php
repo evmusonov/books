@@ -66,21 +66,35 @@ Route::get('/admin/login', 'AdminController@login');
 
 //User
 Route::group(['middleware' => ['auth']], function () {
-
+    Route::get('/user/favorite', 'UserController@favorite');
 });
 Route::get('/user/sign-in', 'UserController@signIn');
 Route::get('/user/sign-up', 'UserController@signUp');
 Route::post('/user/sign-up', 'UserController@register');
-Route::post('/user/sign-in', 'UserController@login');
+Route::post('/user/sign-in', 'UserController@login')->name('login');
 Route::get('/user/logout', 'UserController@logout');
 Route::get('/user/email-confirmation', 'UserController@emailConfirmation');
 Route::post('/user/reset-password', 'UserController@resetPassword');
-Route::get('/user/{login}', 'UserController@profile');
+Route::get('/user/settings', 'UserController@edit');
+Route::put('/user/{user}', 'UserController@update');
 
 //Books
 Route::get('/user/{login}/books', 'BookController@userList');
-Route::get('/user/{login}/books/create', 'BookController@create');
-Route::post('/user/{login}/books', 'BookController@store');
+Route::get('/books', 'BookController@list');
+
+// TODO: add owning middleware
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/books/{book}/change-status', 'BookController@changeStatus');
+    Route::get('/books/{book}/delete', 'BookController@delete');
+    Route::get('/books/add', 'BookController@add');
+    Route::post('/books', 'BookController@store');
+    Route::get('/books/{book}/edit', 'BookController@edit');
+    Route::put('/books/{book}', 'BookController@update');
+});
+
+Route::post('/main/delete-file', 'MainController@deleteFile');
+Route::post('/main/change-city', 'MainController@changeCity');
+Route::get('/books/{book}', 'BookController@view');
 
 Route::get('/mailable', function () {
     $user = App\User::find(1);

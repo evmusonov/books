@@ -15,17 +15,17 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     @if ($dealTypes)
                         @foreach ($dealTypes as $type)
-                            <a class="dropdown-item" href="/user/{{ $user->login }}/books/create?type={{ $type->alias }}">{{ $type->title }}</a>
+                            <a class="dropdown-item" href="/books/add?type={{ $type->alias }}">{{ $type->title }}</a>
                         @endforeach
                     @endif
                 </div>
             </div>
         </div>
     </div>
-    <div class="row user-books-list">
+    <div class="row user-books-list pt-3">
         @if ($user->getBooks())
             @foreach($user->getBooks() as $book)
-                <div class="col-sm-3">
+                <div class="col-sm-3 mb-4">
                     @include('book.card', ['book' => $book])
                 </div>
             @endforeach

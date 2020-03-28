@@ -120,16 +120,6 @@ class UserController extends Controller
         return redirect('/')->with('emailConfirm', 'Не удалось подтвердить E-mail, обратитесь в тех. поддержкку');
     }
 
-    public function profile($login)
-    {
-        $user = User::where('login', $login)->first();
-        if ($user) {
-            return view('user.profile', ['user' => $user]);
-        } else {
-            return redirect('/');
-        }
-    }
-
     public function resetPassword()
     {
         if (\request()->has('email')) {
@@ -148,6 +138,34 @@ class UserController extends Controller
         }
 
         return false;
+    }
+
+    public function edit()
+    {
+        return view('user.edit', ['user' => Auth::user()]);
+    }
+
+    public function update(User $user)
+    {
+        $validatedData = request()->all();
+
+        $validator = Validator::make(
+            request()->all(),
+            [
+                'name' => 'nullable',
+                'email' => 'required|email:rfc,dns|unique:users,email,' . $user->id,
+                'phone' => 'nullable',
+                'city_id' => 'nullable'
+            ],
+            $this->messages()
+        );
+
+        if (!$validator->fails()) {
+            $user->update($validator->validate());
+            return redirect("/user/{$user->login}/books")->with('createMessage', "Настройки упешно изменены");
+        } else {
+            return back()->withErrors($validator)->withInput();
+        }
     }
 
     public function logout()
