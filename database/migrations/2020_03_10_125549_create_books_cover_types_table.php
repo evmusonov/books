@@ -13,7 +13,7 @@ class CreateBooksCoverTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('books_cover_types', function (Blueprint $table) {
+        Schema::create('book_cover_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->timestamps();

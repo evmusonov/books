@@ -13,7 +13,7 @@ class CreateBooksDealTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('books_deal_types', function (Blueprint $table) {
+        Schema::create('book_deal_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 255);
             $table->string('alias', 255);

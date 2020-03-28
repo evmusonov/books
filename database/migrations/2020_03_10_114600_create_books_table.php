@@ -18,6 +18,7 @@ class CreateBooksTable extends Migration
             $table->string('title', 255);
             $table->string('author', 255);
             $table->string('edition', 255);
+            $table->integer('category_id');
             $table->text('description');
             $table->integer('cover_type_id');
             $table->integer('year_edition');
