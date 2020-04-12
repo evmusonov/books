@@ -1,0 +1,62 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.message-page-title {
+    position: fixed;
+    top: 60px;
+    padding-top: 20px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 1;
+}
+.message-page-title-body {
+    width: 900px;
+    margin: 0 auto;
+}
+.message-form-container {
+    position: fixed;
+    bottom: 100px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    z-index: 1;
+}
+.message-form {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.message-form input {
+    width: 88%;
+    margin-right: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+.message-form button {
+    border: 1px solid #188181;
+    background: #188181;
+    padding: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+.message-form button:hover {
+    border: 1px solid #009999;
+    background: #009999;
+}
+#messages {
+    margin-top: 165px;
+    height: 100%;
+    margin-bottom: 50px;
+}

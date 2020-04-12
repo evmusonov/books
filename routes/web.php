@@ -66,7 +66,8 @@ Route::get('/admin/login', 'AdminController@login');
 
 //User
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/user/favorite', 'UserController@favorite');
+    Route::get('/user/favorite', 'FavoriteController@index');
+    Route::post('/user/{user}/favorite', 'FavoriteController@change');
 });
 Route::get('/user/sign-in', 'UserController@signIn');
 Route::get('/user/sign-up', 'UserController@signUp');
@@ -90,11 +91,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/books', 'BookController@store');
     Route::get('/books/{book}/edit', 'BookController@edit');
     Route::put('/books/{book}', 'BookController@update');
+    Route::post('/main/send-message', 'MainController@sendMessage');
+
+    Route::group(['prefix' => 'user/messages'], function () {
+        Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+        Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+        Route::get('{channel}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+        Route::put('{channel}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+    });
 });
 
 Route::post('/main/delete-file', 'MainController@deleteFile');
 Route::post('/main/change-city', 'MainController@changeCity');
+Route::post('/main/get-date', 'MainController@getDate');
 Route::get('/books/{book}', 'BookController@view');
+
 
 Route::get('/mailable', function () {
     $user = App\User::find(1);

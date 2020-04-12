@@ -8,7 +8,7 @@
                 @if (session('exist'))
                     <p class="alert alert-danger" role="alert">{{ session('exist') }}</p>
                 @endif
-                <form method="POST" action="/user/{{ Auth::user()->login }}/books" enctype="multipart/form-data">
+                <form method="POST" action="/books" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="deal_type_id" value="{{ \App\BookDealType::getIdByAlias(request('type')) }}">
                     <input type="hidden" name="user_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}">
@@ -30,10 +30,10 @@
                     <div class="form-row">
                         <div class="col">
                             <div class="form-group">
-                                <label>Издание</label>
+                                <label>Издательство</label>
                                 <input type="text" name="edition" class="form-control" value="{{ old('edition') }}">
                                 @error('edition')
-                                    <p class="alert alert-danger" role="alert">{{ $errors->first('edition') }}</p>
+                                <p class="alert alert-danger" role="alert">{{ $errors->first('edition') }}</p>
                                 @enderror
                             </div>
                         </div>
@@ -42,41 +42,59 @@
                                 <label>Год издания</label>
                                 <input type="text" name="year_edition" class="form-control" value="{{ old('year_edition') }}">
                                 @error('year_edition')
-                                    <p class="alert alert-danger" role="alert">{{ $errors->first('year_edition') }}</p>
+                                <p class="alert alert-danger" role="alert">{{ $errors->first('year_edition') }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Тип обложки</label>
+                                <select class="custom-select" name="cover_type_id">
+                                    <option value="">Выбрать</option>
+                                    @if ($coverTypes)
+                                        @foreach ($coverTypes as $type)
+                                            <option value="{{ $type->id }}">{{ $type->title }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @error('cover_type_id')
+                                <p class="alert alert-danger" role="alert">{{ $errors->first('cover_type_id') }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Количество страниц</label>
+                                <input type="text" name="page_count" class="form-control" value="{{ old('page_count') }}">
+                                @error('page_count')
+                                <p class="alert alert-danger" role="alert">{{ $errors->first('page_count') }}</p>
                                 @enderror
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Количество страниц</label>
-                        <input type="text" name="page_count" class="form-control" value="{{ old('page_count') }}">
-                        @error('page_count')
-                            <p class="alert alert-danger" role="alert">{{ $errors->first('page_count') }}</p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Цена</label>
+                        <label>Цена, руб.</label>
                         <input type="text" name="price" class="form-control" value="{{ old('price') }}">
                         @error('price')
                             <p class="alert alert-danger" role="alert">{{ $errors->first('price') }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Тип обложки</label>
-                        <select class="custom-select" name="cover_type_id">
-                            <option value="">Выбрать</option>
-                            @if ($coverTypes)
-                                @foreach ($coverTypes as $type)
-                                    <option value="{{ $type->id }}">{{ $type->title }}</option>
-                                @endforeach
-                            @endif
+                        <label>Категория</label>
+                        <select class="custom-select" name="category_id">
+                            <option>Выбрать</option>
+                            @foreach(\App\Category::where('status', 1)->get() as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                            @endforeach
                         </select>
-                        @error('cover_type_id')
-                            <p class="alert alert-danger" role="alert">{{ $errors->first('cover_type_id') }}</p>
+                        @error('category_id')
+                        <p class="alert alert-danger" role="alert">{{ $errors->first('category_id') }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Дополнительное описание</label>
+                        <label>Дополнительная информация</label>
                         <textarea class="form-control" rows="6" name="description"></textarea>
                     </div>
                     <div class="form-group">

@@ -8,11 +8,13 @@
                 <hr>
             </div>
             <div class="col-sm-5">
-                {!! \App\Image::render($book->thumb, '300x400') !!}
+                @if ($book->thumb)
+                    {!! \App\Image::render($book->thumb, '300x400') !!}
+                @endif
             </div>
             <div class="col-sm-7">
                 <h3 class="mb-3">Информация о книге</h3>
-                <div class="ml-2">
+                <div class="ml-2 fields">
                     <div>Категория: {{ $book->category->title }}</div>
                     <div>Автор: {{ $book->author }}</div>
                     <div>Издание и год издания: {{ $book->edition }}, {{ $book->year_edition }} г.</div>
@@ -26,9 +28,22 @@
                             <div class="description">{{ $book->description }}</div>
                         </div>
                     @endif
-                    <div class="owner mt-4">
-                        <div>Книгу разместил</div>
-                        <a href="/user/{{ $book->owner->login }}">{{ $book->owner->login }}</a>
+                </div>
+                <div class="owner mt-4">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div>Книгу разместил</div>
+                            <a href="/user/{{ $book->owner->login }}">{{ $book->owner->login }}</a>
+                        </div>
+                        <div class="col-sm-6">
+                            @if (\Illuminate\Support\Facades\Auth::check())
+                                @if (\Illuminate\Support\Facades\Auth::user()->login != $book->owner->login)
+                                    <div class="send-message-js" onclick="return sendMessage('{{ \Illuminate\Support\Facades\Auth::user()->id }}', '{{ $book->owner->id }}', '{{ $book->owner->name ?? $book->owner->login }}');">Написать</div>
+                                @endif
+                            @else
+                                Чтобы написать пользователю, авторизуйтесь или зарегистрируйтесь
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

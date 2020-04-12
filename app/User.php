@@ -54,4 +54,34 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\City', 'id', 'city_id');
     }
+
+    public function favBooksIds()
+    {
+        $favs = Favorite::where('user_id', $this->id)->get();
+        $ids = [];
+
+        if ($favs) {
+            foreach ($favs as $fav) {
+                $ids[] = $fav->book_id;
+            }
+        }
+
+        return $ids;
+    }
+
+    public function messageChannels()
+    {
+        $relations = Participant::where('user_id', $this->id)->select('channel_id')->get();
+        $ids = [];
+
+        if (count($relations)) {
+            foreach ($relations as $relation) {
+                $ids[] = $relation->channel_id;
+            }
+
+            return Channel::whereIn('id', $ids)->get();
+        }
+
+        return [];
+    }
 }

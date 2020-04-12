@@ -1,4 +1,13 @@
 <div class="book-item">
+    @if (\Illuminate\Support\Facades\Auth::check())
+        <div style="background: none;" class="{{ in_array($book->id, \Illuminate\Support\Facades\Auth::user()->favBooksIds()) ? 'no-edit-panel' : 'edit-panel' }}">
+            <div>
+                <a href="/user/{{ \Illuminate\Support\Facades\Auth::user()->id }}/favorite?book_id={{ $book->id }}" id="fav-{{ \Illuminate\Support\Facades\Auth::user()->id }}-{{ $book->id }}" class="change-fav-js" title="В избранное">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    @endif
     @if ($book->thumb)
         <div><a href="/books/{{ $book->id }}">{!! \App\Image::render($book->thumb, 'thumb') !!}</a></div>
     @endif

@@ -16,24 +16,19 @@ use App\Components\MenuHelper as Menu;
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/css/owl.theme.default.min.css">
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet">
+    @yield('head-css')
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="/js/forms.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/backend.js"></script>
-    <script src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        window.onload = function () {
-            jQuery("#user-city").text(ymaps.geolocation.city);
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -70,8 +65,8 @@ use App\Components\MenuHelper as Menu;
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="/user/{{ Auth::user()->login }}/books">Мои книги</a>
                                 <a class="dropdown-item" href="/user/messages">Мои сообщения</a>
-                                <a class="dropdown-item" href="/user/messages">Мои отзывы</a>
-                                <a class="dropdown-item" href="/user/messages">Мои рейтинг</a>
+                                <a class="dropdown-item" style="cursor: not-allowed">Мои отзывы</a>
+                                <a class="dropdown-item" style="cursor: not-allowed">Мои рейтинг</a>
                                 <a class="dropdown-item" href="/user/favorite">Избранное</a>
                                 <a class="dropdown-item" href="/user/settings">Настройки</a>
                                 <a class="dropdown-item" href="/user/logout">Выход</a>
@@ -96,5 +91,7 @@ use App\Components\MenuHelper as Menu;
         asdas
     </footer>
     @include('modals.city-choose')
+    @include('modals.send-message')
+    @include('main.toast.index')
 </body>
 </html>

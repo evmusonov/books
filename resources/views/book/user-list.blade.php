@@ -15,7 +15,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     @if ($dealTypes)
                         @foreach ($dealTypes as $type)
-                            <a class="dropdown-item" href="/books/add?type={{ $type->alias }}">{{ $type->title }}</a>
+                            <a class="dropdown-item" {!! $type->alias != 'rent' ? 'href="/books/add?type=' . $type->alias . '"' : 'style="cursor: not-allowed;"' !!}>{{ $type->title }}</a>
                         @endforeach
                     @endif
                 </div>

@@ -267,6 +267,7 @@ input[type="checkbox"] {
     padding: 0;
 }
 .book-item {
+    position: relative;
     background: #ffffff;
     padding: 5px;
     text-align: center;
@@ -298,8 +299,8 @@ input[type="checkbox"] {
     display: none;
     position: absolute;
     background: #ffffff;
-    padding: 0 5px;
-    right: 15px;
+    padding: 0 10px;
+    right: 0;
     top: 0;
     z-index: 10;
 }
@@ -308,6 +309,20 @@ input[type="checkbox"] {
 }
 .book-item .edit-panel a:hover {
     color: #999999;
+}
+.book-item .no-edit-panel {
+    position: absolute;
+    background: #ffffff;
+    padding: 0 10px;
+    right: 0;
+    top: 0;
+    z-index: 10;
+}
+.book-item .no-edit-panel a {
+    color: #188181;
+}
+.book-item .no-edit-panel a:hover {
+    color: #23A8A8;
 }
 .book-item .moderation {
     background: #FFD900;
@@ -368,6 +383,9 @@ input[type="checkbox"] {
 .book-view .extra-info .description {
     margin-left: 10px;
 }
+.book-view .fields div {
+    margin-bottom: 7px;
+}
 /* End of book */
 
 /* Owl carusel */
@@ -394,3 +412,100 @@ input[type="checkbox"] {
     text-decoration: underline;
 }
 /* End of menu */
+
+/* Messages */
+.messages {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.messages .block {
+    background: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.messages .border {
+    border: 1px solid rgba(24, 129, 129, 0.5) !important;
+}
+.messages .block:hover {
+    background: #eeeeee;
+    padding: 10px;
+}
+.messages .link {
+    text-decoration: none;
+    color: #333333;
+}
+.messages .block .header .username {
+    float: left;
+}
+.messages .block .header .date {
+    float: right;
+    color: #666666;
+    font-size: 13px;
+}
+.messages .block .header .new {
+    font-size: 13px;
+    color: #666666;
+}
+.messages-form input {
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+}
+.messages-form button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+}
+.messages .own {
+    float: right;
+    clear: both;
+    padding: 5px;
+    max-width: 49%;
+    word-break: break-all;
+}
+.messages .own .login {
+    font-style: italic;
+    color: #999999;
+}
+.messages .own .text {
+    background: #f2f2f2;
+    border-radius: 5px;
+    padding: 5px;
+    line-height: 1.2;
+}
+.messages .mate {
+    float: left;
+    clear: both;
+    padding: 5px;
+    max-width: 49%;
+    word-break: break-all;
+}
+.messages .mate .login {
+    font-style: italic;
+    color: #999999;
+}
+.messages .mate .text {
+    background: lightblue;
+    border-radius: 5px;
+    padding: 5px;
+    line-height: 1.2;
+}
+.messages .own .date, .messages .mate .date {
+    font-size: 11px;
+}
+.send-message-js {
+    float: right;
+    padding: 5px;
+    background: #188181;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-top: 5px;
+}
+.send-message-js:hover {
+    background: #009999;
+}
+/* End of messages */
