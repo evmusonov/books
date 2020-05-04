@@ -38,7 +38,7 @@
         <div class="col-sm-12">
             <div class="message-form-container">
                 <form action="" class="message-form">
-                    <input id="m" autocomplete="off" placeholder="Введите сообщение" /><button>Отправить</button>
+                    <textarea id="m" res autocomplete="off" placeholder="Введите сообщение" rows="2"></textarea><button>Отправить</button>
                 </form>
             </div>
         </div>
@@ -58,7 +58,7 @@
             $('form').submit(function(e){
                 e.preventDefault(); // prevents page reloading
                 if ($('#m').val() != "") {
-                    socket.emit('chat message', userId, $('#m').val(), username);
+                    socket.emit('chat message', userId, $('#m').val(), username, '{{ date('Y-m-d H:i:s') }}');
                     $('#m').val('');
                 }
                 return false;

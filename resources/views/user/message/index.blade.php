@@ -17,7 +17,7 @@
                     <a href="/user/messages/{{ $channel->id }}" class="link">
                         <div class="block {{ count($channel->unreadMessages) > 0 ? 'border' : '' }}">
                             <div class="header">
-                                <div class="username">{{ $channel->participant->data->name }} <span class="new">(Новые сообщения: {{ count($channel->unreadMessages) }})</span></div>
+                                <div class="username">{{ $channel->participant->data->name ?? $channel->participant->data->login }} <span class="new">(Новые сообщения: {{ count($channel->unreadMessages) }})</span></div>
                                 <div class="date">Дата последнего сообщения {{ date('d.m.Y H:s', strtotime($channel->lastMessageTime->created_at)) }}</div>
                             </div>
                         </div>

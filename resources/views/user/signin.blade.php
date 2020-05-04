@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="auth-form">
-                <h1>Авторизация</h1>
+                <h1 class="mb-4">Авторизация</h1>
                 @if (session('status'))
-                    <p class="alert alert-danger" role="alert">{{ session('status') }}</p>
+                    <p class="alert alert-danger text-center" role="alert">{!! session('status') !!}</p>
                 @endif
                 @if (session('emailError'))
                     <p class="alert alert-danger" role="alert">{{ session('emailError') }}</p>
@@ -38,8 +38,10 @@
                     </div>
                     <button type="submit" class="btn btn-primary custom-button">Войти</button>
                 </form>
+                <div class="repeat-confirm"><a href="#" onclick="$('#repeat-confirm-modal').modal(); return false;">Не пришло письмо после регистрации</a></div>
             </div>
         </div>
     </div>
     @include('modals.reset-password')
+    @include('modals.repeat-confirm')
 @endsection

@@ -27,9 +27,11 @@
                         Обмен, аренда и продажа книг
                     </div>
                 </div>
-                <h1 class="mb-4 mt-4">Регистрация на сайте Book-exchange.ru</h1>
-                <div>Здравствуйте, Вы успешно зарегистрировались на сайте! Для того, чтобы начать полноценно пользоваться функциями сайта, подтвердите ваш E-mail адрес, перейдя по ссылке ниже.</div>
-                <div><a href="http://{{ $_SERVER['SERVER_NAME'] }}/user/email-confirmation?token={{ $user->email_verify_token }}">{{ $_SERVER['SERVER_NAME'] }}/user/email-confirmation?token={{ $user->email_verify_token }}</a></div>
+                <h1 class="mb-4 mt-4">Сброс пароля на сайте Book-exchange.ru</h1>
+                <div>Здравствуйте, {{ $user->name ?? $user->login }}!</div>
+                <div>От вас был получен запрос на смену пароля. Для того, чтобы установить новый пароль, пройдите по ссылке:</div>
+                <div><a href="http://{{ $_SERVER['SERVER_NAME'] }}/user/new-password?token={{ $resetToken }}">{{ $_SERVER['SERVER_NAME'] }}/user/new-password?token={{ $resetToken }}</a></div>
+                <div>Если вы не запрашивали смену пароля, проигнорируйте это сообщение.</div>
             </div>
         </div>
     </div>

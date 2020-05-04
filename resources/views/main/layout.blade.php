@@ -34,29 +34,13 @@ use App\Components\MenuHelper as Menu;
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="logo"><a href="/"><img width="200" src="/images/logo-beta.png"></a></div>
+                <div class="col-12 col-md-3">
+                    <div class="logo"><a href="/"><img width="100%" src="/images/logo-beta.png"></a></div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-10 col-md-7">
                     {{ Menu::get() }}
                 </div>
-                <div class="col-sm-2 text-center">
-                    <div class="chosen-city">
-                        <div class="title">Город:</div>
-                        <div class="name" onclick="$('#city-choose-modal').modal(); return false;">
-                            @if (Auth::check())
-                                @if (Auth::user()->city_id)
-                                    {{ Auth::user()->city->title }}
-                                @else
-                                    {{ \App\Components\Session::getCity() }}
-                                @endif
-                            @else
-                                {{ \App\Components\Session::getCity() }}
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
+                <div class="col-2 col-md-2">
                     @if (Auth::check())
                         <div class="dropdown custom-dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +51,7 @@ use App\Components\MenuHelper as Menu;
                                 <a class="dropdown-item" href="/user/messages">Мои сообщения</a>
                                 <a class="dropdown-item" style="cursor: not-allowed">Мои отзывы</a>
                                 <a class="dropdown-item" style="cursor: not-allowed">Мои рейтинг</a>
+                                <a class="dropdown-item" href="/user/wishes">Мои пожелания</a>
                                 <a class="dropdown-item" href="/user/favorite">Избранное</a>
                                 <a class="dropdown-item" href="/user/settings">Настройки</a>
                                 <a class="dropdown-item" href="/user/logout">Выход</a>
@@ -81,6 +66,32 @@ use App\Components\MenuHelper as Menu;
                 </div>
             </div>
         </div>
+        <div class="sub-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-2">
+                        <div class="chosen-city-block">
+                            <div class="title">Город:</div>
+                            <div class="name" onclick="$('#city-choose-modal').modal(); return false;">
+                                {{ \App\Components\Session::getCity()->title }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-10">
+                        <form class="fast-search" action="/search" method="GET">
+                            <input placeholder="Введите название книги, автора или издательство" class="text" name="q" type="text" value="{{ request('q') ?? request('q') }}">
+                            <button class="button" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-12">
+                        <div class="links">
+                            <a href="/feedback">Обратная связь</a>
+                            <a href="/wishes">Ваши пожелания</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
         <div class="container">
@@ -88,10 +99,12 @@ use App\Components\MenuHelper as Menu;
         </div>
     </main>
     <footer>
+        <hr>
         asdas
     </footer>
     @include('modals.city-choose')
     @include('modals.send-message')
+    @include('modals.system-message')
     @include('main.toast.index')
 </body>
 </html>

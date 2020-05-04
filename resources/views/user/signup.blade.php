@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="auth-form">
-                <h1>Регистрация</h1>
+                <h1 class="mb-4">Регистрация</h1>
                 @if (session('status'))
                     <p class="alert alert-danger" role="alert">{{ session('status') }}</p>
                 @endif

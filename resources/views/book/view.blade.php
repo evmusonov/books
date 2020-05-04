@@ -31,19 +31,33 @@
                 </div>
                 <div class="owner mt-4">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div>Книгу разместил</div>
-                            <a href="/user/{{ $book->owner->login }}">{{ $book->owner->login }}</a>
+                        <div class="col-sm-12">
+                            <hr>
+                            <div>Книгу разместил <a href="/user/{{ $book->owner->login }}">{{ $book->owner->login }}</a> (г. {{ $book->owner->city->title }})</div>
+                            <hr>
                         </div>
-                        <div class="col-sm-6">
-                            @if (\Illuminate\Support\Facades\Auth::check())
-                                @if (\Illuminate\Support\Facades\Auth::user()->login != $book->owner->login)
-                                    <div class="send-message-js" onclick="return sendMessage('{{ \Illuminate\Support\Facades\Auth::user()->id }}', '{{ $book->owner->id }}', '{{ $book->owner->name ?? $book->owner->login }}');">Написать</div>
+                    </div>
+                    <div class="row">
+                        @if (\Illuminate\Support\Facades\Auth::check())
+                            <div class="col-sm-6">
+                                @if (\Illuminate\Support\Facades\Auth::user()->id != $book->owner->id)
+                                    <div class="div-button" onclick="return sendMessage('{{ \Illuminate\Support\Facades\Auth::user()->id }}', '{{ $book->owner->id }}', '{{ $book->owner->name ?? $book->owner->login }}');">Написать</div>
                                 @endif
-                            @else
-                                Чтобы написать пользователю, авторизуйтесь или зарегистрируйтесь
-                            @endif
-                        </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @if (\Illuminate\Support\Facades\Auth::user()->id != $book->owner->id)
+                                    <div class="div-button">
+                                        @if ($book->dealType->id == 1)
+                                            Купить книгу
+                                        @elseif ($book->dealType->id == 3)
+                                            Предложить обмен
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
+                        @else
+                            <div class="col-sm-12">Чтобы написать пользователю, авторизуйтесь или зарегистрируйтесь</div>
+                        @endif
                     </div>
                 </div>
             </div>

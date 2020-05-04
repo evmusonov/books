@@ -1,4 +1,4 @@
-<div class="book-item">
+<div class="book-item" {!! $book->statusBorder() !!}>
     <div class="edit-panel">
         <div>
             <a href="/books/{{ $book->id }}/edit?type={{ $book->dealType ? $book->dealType->alias : '' }}" title="Редактировать">
